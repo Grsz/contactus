@@ -1,28 +1,30 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { connect } from 'react-redux';
+import { inputProps } from './inputProps';
+import Input from './Components/Input';
+import Submit from './Components/Submit';
+import Error from './Components/Error';
+import { getForms } from './actions';
 
 class App extends Component {
+  componentWillMount = () => {
+    this.props.getForms();
+  }
+  renderInputs = () => inputProps.map(input => {
+    const { id, ...elementProps } = input;
+    return <Input id={id} key={id} elementProps={elementProps} />
+  })
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <h1>Contact us</h1>
+        {this.renderInputs()}
+        <Error/>
+        <Submit/>
       </div>
     );
   }
 }
-
-export default App;
+const mapDispatchToProps = { getForms };
+export default connect(null, mapDispatchToProps)(App);
