@@ -9,6 +9,7 @@ body {
   background: linear-gradient(60deg, #a8ff78, #78ffd6);
   padding: 20px;
   position: relative;
+  overflow-x: hidden
 }
 #root{
   height: 100%;
@@ -18,6 +19,5 @@ body {
   transition: all 0.5s ease
 }
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+  font-family: 'Montserrat', sans-serif;
 }
